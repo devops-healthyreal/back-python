@@ -10,7 +10,10 @@ from tensorflow.keras.models import load_model
 import os
 
 # 모델 로드
-model = load_model('./face.h5')
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, 'face.h5')
+
+model = load_model(MODEL_PATH)
 
 
 class FaceEmotion(Resource):

@@ -5,6 +5,7 @@ import pandas as pd
 from basic_fuc import db_conn, db_disconn, query_select
 from flask_restful import Resource
 from flask import request
+import os
 
 class recommendMate(Resource):
     def post(self):
@@ -40,7 +41,16 @@ class recommendMate(Resource):
         return ratings_df
 
     def getUserMateProfile(self, id):
-        return requests.get(f'http://localhost:4000/comm/mate?id={id}').json()
+        base_url = os.getenv("AUTH_SERVER_URL", "http://localhost:4000").rstrip("/")
+        url = f"{base_url}/comm/mate"
+        try:
+            resp = requests.get(url, params={"id": id}, timeout=5)
+            resp.raise_for_status()
+            return resp.json()
+        except requests.RequestException as e:
+            print(f"[getUserMateProfile] Request failed: {e}")
+            return []
+
     def recommend_mates(self, ID, n_top, data, model):
         mate_ids = data.df['MATE_ID'].unique()
         rated_mates = data.df[data.df['ID'] == ID]['MATE_ID']

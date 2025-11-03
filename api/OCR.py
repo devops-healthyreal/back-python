@@ -9,6 +9,9 @@ from google.oauth2 import service_account
 import re
 from PIL import Image
 import logging
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # 스케일링 요소 설정
 scale_factor = 2
@@ -16,6 +19,7 @@ scale_factor = 2
 section_ratio = (0.0, 0.1, 0.7, 0.5)
 
 GOOGLE_APPLICATION_CREDENTIALS_PATH = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+print(GOOGLE_APPLICATION_CREDENTIALS_PATH)
 
 def get_vision_client():
     if GOOGLE_APPLICATION_CREDENTIALS_PATH and os.path.exists(GOOGLE_APPLICATION_CREDENTIALS_PATH):
