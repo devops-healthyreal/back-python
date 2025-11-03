@@ -1,38 +1,17 @@
-# Python caches
+# Python cache
 __pycache__/
-*.py[cod]
-*.so
+*.pyc
 
 # Virtual environments
-.venv/
+venv/
+api/venv/
+venv-clean/
 
-# Local secrets and credentials
+# OS/IDE files
+.DS_Store
+.idea/
+
+# Environment / secret files
 .env
 secret/
-secret/**/*.json
-secret/google
-
-# IDE/editor config
-.idea/
-.vscode/
-
-
-
-# Model artifacts and media caches
-runs/
-static/upload_image/
-static/food_image/
-static/ocr/
-static/foodocr/
-static/foodOCR/
-static/pose/
-*.pt
-*.h5
-*.onnx
-
-!best.pt
-!face.h5
-!pose.pt
-
-# OS files
-.DS_Store
+requirements.txt
