@@ -1,0 +1,8 @@
+*.jtl
+*.log
+runs/
+tmp/
+temp/
+logs/
+**/node_modules/**
+**/.venv/**
